@@ -1,4 +1,17 @@
-﻿<h1>Practice</h1>
+﻿@page "/Practice01"
+
+@{
+    /*
+     * @page 增加 Url 路徑位置
+     * 不加也可以直接當 Component 使用
+     * [Parameter] 屬性(attr) 可使外部攜帶參數來呼叫此 Component
+     * 若帶參數但 Component 沒有該參數的話，編譯會成功但出現一片白
+     * 欄位初始設定式無法參考非靜態欄位、方法或屬性(prop)
+     * @function 定義 Component 的狀態(如屬性(prop)、作用域)與方法等邏輯與事件處理
+     */
+}
+
+<h1>Practice01</h1>
 
 <p>Current count: @currentCount</p>
 
@@ -8,9 +21,11 @@
 @functions {
     int currentCount = 0;
 
+    [Parameter] int IncrementAmount { get; set; } = 1;
+
     void IncrementCount()
     {
-        currentCount++;
+        currentCount += IncrementAmount;
     }
 
     void Clear()

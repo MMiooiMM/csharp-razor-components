@@ -1,0 +1,19 @@
+﻿<h1>Practice04</h1>
+
+<h3>改良 Practice01 使計數器可以由外部修改，實現動態繫結。</h3>
+
+<input value="@CurrentValue" onchange="@ChangeValue" />
+
+<Practice04_01 bind-IncrementAmount="@CurrentValue" />
+
+@functions{
+    private int CurrentValue = 10;
+
+    private void ChangeValue(UIChangeEventArgs e)
+    {
+        if (int.TryParse((string)e.Value, out int value))
+        {
+            CurrentValue = value;
+        }
+    }
+}

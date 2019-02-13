@@ -2,7 +2,7 @@
 
 <h1>米歐的練習筆記</h1>
 
-@for (var i = 1; i <= 3; i++)
+@for (var i = 1; i <= 4; i++)
 {
     var buttonNumber = i;
 
@@ -11,7 +11,7 @@
 
 @if (index == 1)
 {
-    <Practice01 IncrementAmount="10" />
+    <Practice01 />
 }
 else if (index == 2)
 {
@@ -21,11 +21,15 @@ else if (index == 3)
 {
     <Practice03 />
 }
+else if (index == 4)
+{
+    <Practice04 />
+}
 
 @functions{
-    int index = 0;
+    private int index = 0;
 
-    void ChangeIndex(int value)
+    private void ChangeIndex(int value)
     {
         index = value;
     }

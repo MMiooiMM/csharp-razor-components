@@ -1,4 +1,6 @@
-﻿<h2>@message</h2>
+﻿<h1>Practice03</h1>
+
+<h2>@message</h2>
 
 @for (var i = 1; i < 4; i++)
 {
@@ -6,16 +8,15 @@
 
     <button class="btn btn-primary"
             onclick="@(e => UpdateHeading(e, buttonNumber))">
-        Button #@i
+        按鈕 #@i
     </button>
 }
 
 @functions {
-    string message = "Select a button to learn its position.";
+    string message = "點選按鈕顯示滑鼠位置";
 
     void UpdateHeading(UIMouseEventArgs e, int buttonNumber)
     {
-        message = $"You selected Button #{buttonNumber} at " +
-            "mouse position: {e.ClientX} X {e.ClientY}.";
+        message = $"你選擇了按鈕 #{buttonNumber} 滑鼠位於: {e.ClientX} X {e.ClientY}.";
     }
 }

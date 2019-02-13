@@ -1,7 +1,32 @@
 ﻿@page "/"
 
-<h1>Hello, world!</h1>
+<h1>米歐的練習筆記</h1>
 
-Welcome to your new app.
+@for (var i = 1; i <= 3; i++)
+{
+    var buttonNumber = i;
 
-<Practice01 IncrementAmount="10"/>
+    <button class="btn btn-primary" onclick="@(() => ChangeIndex(buttonNumber))">@("Practice0" + i)</button>
+}
+
+@if (index == 1)
+{
+    <Practice01 IncrementAmount="10" />
+}
+else if (index == 2)
+{
+    <Practice02 />
+}
+else if (index == 3)
+{
+    <Practice03 />
+}
+
+@functions{
+    int index = 0;
+
+    void ChangeIndex(int value)
+    {
+        index = value;
+    }
+}

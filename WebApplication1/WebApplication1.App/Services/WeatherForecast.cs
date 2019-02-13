@@ -6,9 +6,9 @@ namespace WebApplication1.App.Services
     {
         public DateTime Date { get; set; }
 
-        public int TemperatureC { get; set; }
+        public decimal TemperatureC { get; set; }
 
-        public int TemperatureF { get; set; }
+        public decimal TemperatureF { get { return TemperatureC * (9m / 5m) + 32m; } }
 
         public string Summary { get; set; }
     }

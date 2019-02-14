@@ -2,7 +2,7 @@
 
 <h1>米歐的練習筆記</h1>
 
-@for (var i = 1; i <= 4; i++)
+@for (var i = 1; i <= 5; i++)
 {
     var buttonNumber = i;
 
@@ -10,21 +10,15 @@
 }
 
 @if (index == 1)
-{
-    <Practice01 />
-}
+{<Practice01 /> }
 else if (index == 2)
-{
-    <Practice02 />
-}
+{ <Practice02 /> }
 else if (index == 3)
-{
-    <Practice03 />
-}
+{ <Practice03 /> }
 else if (index == 4)
-{
-    <Practice04 />
-}
+{ <Practice04 /> }
+else if (index == 5)
+{ <Practice05 />}
 
 @functions{
     private int index = 0;

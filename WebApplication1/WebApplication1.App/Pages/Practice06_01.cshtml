@@ -1,0 +1,11 @@
+﻿<h3>@Title</h3>
+
+<p>@ChildContent</p>
+
+@functions {
+    [Parameter]
+    private string Title { get; set; }
+
+    [Parameter]
+    private RenderFragment ChildContent { get; set; }
+}

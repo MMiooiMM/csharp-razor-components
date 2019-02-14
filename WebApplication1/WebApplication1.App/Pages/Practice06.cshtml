@@ -1,0 +1,17 @@
+﻿@using WebApplication1.App.Services
+
+<h1>Practice06</h1>
+
+@foreach (var childComponent in childComponents)
+{
+    <Practice06_01 Title="@childComponent.ChildTitle">
+        @childComponent.ChildContent
+    </Practice06_01>
+}
+
+@functions{
+    private IList<ChildComponent> childComponents = new List<ChildComponent>() {
+    new ChildComponent(){ ChildTitle = "Practice06_01", ChildContent = "The property receiving the RenderFragment content must be named ChildContent by convention." },
+    new ChildComponent(){ ChildTitle = "Title2", ChildContent = "Content2" }
+};
+}

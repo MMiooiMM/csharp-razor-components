@@ -1,0 +1,47 @@
+﻿@using Microsoft.JSInterop;
+@inject IJSRuntime JsRuntime;
+
+<h1>Practice08</h1>
+
+<button onclick=@CallJSDialog>Call JavaScript Dialog</button>
+<button onclick=@CallJSDialog2>Call JavaScript Dialog2</button>
+
+@functions{
+    private async void CallJSDialog()
+    {
+        if (await JSRuntime.Current.InvokeAsync<bool>("alert", "Hello"))
+        {
+            // 傳回 JS 方法結果，但因為 alert 不需要結果。
+        }
+
+        if(await JSRuntime.Current.InvokeAsync<bool>("confirm", "Hello"))
+        {
+            await JSRuntime.Current.InvokeAsync<bool>("console.log", new { greeting = "Hello" });
+        }
+        else
+        {
+            await JSRuntime.Current.InvokeAsync<bool>("console.log", "No!");            
+        }
+    }
+
+    private async void CallJSDialog2()
+    {
+
+        if(await JSRuntime.Current.InvokeAsync<bool>("confirm", "Hello"))
+        {
+            await JSRuntime.Current.InvokeAsync<bool>("console.log", new { greeting = "Hello" });
+        }
+        else
+        {
+            await JSRuntime.Current.InvokeAsync<bool>("console.log", "No!");            
+        }
+    }
+
+    private async void CallJSConsolelog()
+    {
+        // Call our function with an object. It will be serialized (JSON),
+        // passed to JS-part of Blazor and deserialized into a JavaScript
+        // object again.
+        await JSRuntime.Current.InvokeAsync<bool>("console.log", new { greeting = "Hello" });
+    }
+}

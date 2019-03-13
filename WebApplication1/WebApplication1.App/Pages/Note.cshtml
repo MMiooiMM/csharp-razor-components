@@ -28,4 +28,8 @@
 <p>非同步呼叫 JS 特定方法為 Task<T> InvokeAsync<T>(string identifier, params object[] args)，以 window 物件為主，identifier 為 scope.function， args 是給特定方法的參數，以序列化的 JSON 為主，傳回值為該方法的結果，型態一樣是序列化的 JSON。 - Practice08</p>
 <p>因為是呼叫 window 物件，所以可以自行添加 JS 方法在 index.html 頁面。 - Practice08</p>
 <p>在使用時，連續使用兩次 Alert 方法，只能正確顯示一次，這部分還需要了解。 - Practice08</p>
-<p>測試後發現 onclick=@() 還沒有添加方法名稱時，會直接讓 VS2019 Preview 版本崩潰</p>
+<p>測試後發現 onclick=@@() 還沒有添加方法名稱時，會直接讓 VS2019 Preview 版本崩潰</p>
+
+<h3>Day 05</h3>
+
+<p>繼續琢磨 CheckBox 排序問題，嘗試新增 Button 去改變 todolist 的 IsDone，結果能正確重新排序且沒有勾勾殘留，但按鈕的事件好像一開始渲染就決定了，可以看到 todolist 的 Title 能正確重新排序，但事件帶入的參數卻是初始值。 - Practice09</p>

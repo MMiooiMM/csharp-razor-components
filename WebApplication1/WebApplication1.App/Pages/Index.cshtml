@@ -2,29 +2,25 @@
 
 <h1>米歐的練習筆記</h1>
 
-@for (var i = 1; i <= 8; i++)
+@for (var i = 1; i <= 9; i++)
 {
     var buttonNumber = i;
 
-    <button class="btn btn-primary" onclick="@(() => ChangeIndex(buttonNumber))">@("Practice0" + i)</button>
+    <button class="btn btn-primary" onclick="@(() => ChangeIndex(buttonNumber))">@("Practice" + i.ToString().PadLeft(2, '0'))</button>
 }
 
-@if (index == 1)
-{<Practice01 /> }
-else if (index == 2)
-{ <Practice02 /> }
-else if (index == 3)
-{ <Practice03 /> }
-else if (index == 4)
-{ <Practice04 /> }
-else if (index == 5)
-{ <Practice05 />}
-else if (index == 6)
-{ <Practice06 />}
-else if (index == 7)
-{ <Practice07 />}
-else if (index == 8)
-{ <Practice08 />}
+@switch (index)
+{
+    case 1: <Practice01 />break;
+    case 2: <Practice02 />break;
+    case 3: <Practice03 />break;
+    case 4: <Practice04 />break;
+    case 5: <Practice05 />break;
+    case 6: <Practice06 />break;
+    case 7: <Practice07 />break;
+    case 8: <Practice08 />break;
+    case 9: <Practice09 />break;
+}
 
 @functions{
     private int index = 0;

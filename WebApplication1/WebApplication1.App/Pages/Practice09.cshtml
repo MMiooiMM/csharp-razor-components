@@ -1,23 +1,27 @@
 ﻿@using WebApplication1.App.Services
 
-<h1>Practice07</h1>
+<h1>Practice09</h1>
 
 <h3>代辦清單 @todos.Count(todo => !todo.IsDone) 筆</h3>
 
 <input placeholder="填寫代辦事項..." bind="@newTodo" />
 <button onclick="@AddTodo">增加</button>
 <button onclick="@DelTodo">清除完成事項</button>
-<button onclick="@Reverse">反轉狀態</button>
-<button onclick="@Show">顯示狀態</button>
 <ul>
-    @foreach (var todo in todos.OrderBy(x => x.IsDone))
+    @foreach (var item in todos.OrderBy(x => x.IsDone).Select((x, index) => new { todo = x, index }))
     {
         <li>
-            <input id="@todo.GetHashCode()" type="checkbox" bind="@todo.IsDone"/>
-            <input bind="@todo.Title" />
+            <input id="@item.todo.GetHashCode()" type="checkbox" bind="@item.todo.IsDone" />
+            <input bind="@item.todo.Title" />
+            <button onclick="@(() => ReverseTodo(item.index))"> v </button>
         </li>
     }
 </ul>
+
+@foreach (var item in todos.OrderBy(x => x.IsDone).Select((x, index) => new { todo = x, index }))
+{
+    <button onclick="@(() => ReverseTodo(item.index))">反轉 @item.todo.Title 狀態</button>
+}
 
 <h3>完成 @todos.Count(todo => todo.IsDone) 筆</h3>
 
@@ -32,10 +36,10 @@
 
 @functions {
     private IList<TodoItem> todos = new List<TodoItem>() {
-    new TodoItem() { Title = "Test1" },
-    new TodoItem() { Title = "Test2" },
-    new TodoItem() { Title = "Test3" }
-};
+        new TodoItem() { Title = "Test1" },
+        new TodoItem() { Title = "Test2" },
+        new TodoItem() { Title = "Test3" }
+    };
 
     private string newTodo;
 
@@ -53,18 +57,8 @@
         todos = todos.Where(x => !x.IsDone).ToList();
     }
 
-    private void Reverse()
+    private void ReverseTodo(int i)
     {
-        todos = todos.Select(x => new TodoItem()
-        {
-            Title = x.Title,
-            IsDone = !x.IsDone
-        })
-        .ToList();
-    }
-
-    private async void Show()
-    {
-        await JSRuntime.Current.InvokeAsync<bool>("console.log", todos);
+        todos[i].IsDone = !todos[i].IsDone;
     }
 }
